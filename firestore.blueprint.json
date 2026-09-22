@@ -1,0 +1,169 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "App users and maritime staff credentials",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["ADMIN", "MANAGER", "OPERATOR"] },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "username", "name", "email", "role"]
+    },
+    "vessels": {
+      "title": "Vessel",
+      "description": "Maritime fleet vessels",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "callSign": { "type": "string" },
+        "imoNumber": { "type": "string" },
+        "capacityDWT": { "type": "number" },
+        "capacityTEU": { "type": "number" },
+        "yearBuilt": { "type": "number" },
+        "flag": { "type": "string" },
+        "currentPortId": { "type": "string" },
+        "status": { "type": "string" },
+        "speedKnots": { "type": "number" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "code", "name", "type", "status"]
+    },
+    "ports": {
+      "title": "Port",
+      "description": "Ports and maritime terminals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "city": { "type": "string" },
+        "province": { "type": "string" },
+        "coordinates": { "type": "object" },
+        "wharfLengthMeters": { "type": "number" },
+        "maxDraftMeters": { "type": "number" },
+        "operationalHours": { "type": "string" },
+        "contactPhone": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "code", "name", "city"]
+    },
+    "routes": {
+      "title": "Route",
+      "description": "Shipping routes and lanes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "originPortId": { "type": "string" },
+        "destinationPortId": { "type": "string" },
+        "distanceNm": { "type": "number" },
+        "estimatedDurationHours": { "type": "number" },
+        "baseRatePerTeu": { "type": "number" },
+        "baseRatePerTon": { "type": "number" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "code", "originPortId", "destinationPortId"]
+    },
+    "customers": {
+      "title": "Customer",
+      "description": "Shippers and cargo clients",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "picName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" },
+        "npwp": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "code", "name", "category"]
+    },
+    "voyages": {
+      "title": "Voyage",
+      "description": "Voyage schedules and logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "voyageNumber": { "type": "string" },
+        "vesselId": { "type": "string" },
+        "routeId": { "type": "string" },
+        "departureDate": { "type": "string" },
+        "arrivalDate": { "type": "string" },
+        "status": { "type": "string" },
+        "masterCaptain": { "type": "string" },
+        "totalLoadedTeu": { "type": "number" },
+        "totalLoadedTons": { "type": "number" },
+        "fuelConsumptionEstLiters": { "type": "number" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "voyageNumber", "vesselId", "routeId", "status"]
+    },
+    "billsOfLading": {
+      "title": "BillOfLading",
+      "description": "Sea waybills and bills of lading",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "blNumber": { "type": "string" },
+        "bookingDate": { "type": "string" },
+        "voyageId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "cargoCategory": { "type": "string" },
+        "cargoDescription": { "type": "string" },
+        "containerNumbers": { "type": "array" },
+        "containerCount": { "type": "number" },
+        "grossWeightTons": { "type": "number" },
+        "volumeCbm": { "type": "number" },
+        "freightRate": { "type": "number" },
+        "handlingFee": { "type": "number" },
+        "insuranceFee": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "paymentStatus": { "type": "string" },
+        "cargoStatus": { "type": "string" },
+        "consigneeName": { "type": "string" },
+        "consigneeAddress": { "type": "string" },
+        "consigneePhone": { "type": "string" },
+        "shipperNotes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "blNumber", "voyageId", "customerId", "totalAmount"]
+    },
+    "trackingLogs": {
+      "title": "CargoTrackingLog",
+      "description": "Cargo tracking audit logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "blId": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string" },
+        "location": { "type": "string" },
+        "notes": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      },
+      "required": ["id", "blId", "status", "timestamp"]
+    }
+  }
+}

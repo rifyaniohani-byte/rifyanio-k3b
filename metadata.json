@@ -1,0 +1,6 @@
+{
+  "name": "Aplikasi Bisnis Angkutan Laut",
+  "description": "Sistem manajemen operasional bisnis angkutan laut, armada kapal, kargo, rute pelayaran, transaksi pengiriman, manifest, dan laporan terintegrasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
